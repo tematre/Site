@@ -260,3 +260,6 @@ paket-files/
 __pycache__/
 *.pyc
 tools
+bower_components
+build
+/TemaTre.Site.Resume.Frontend/package-lock.json

@@ -20,6 +20,7 @@ namespace TemaTre.Site.Resume
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
+                .UseWebRoot("wwwroot")
                 .Build();
     }
 }

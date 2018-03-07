@@ -18,21 +18,21 @@ var path = {
         js: 'build/js/',
         css: 'build/css/',
         img: 'build/img/',
-        fonts: 'build/fonts/'
+        fonts: 'build/font/'
     },
     sources: { 
         html: 'sources/*.html', 
-        js: 'sources/js/main.js',
-        style: 'sources/style/main.scss',
+        js: 'sources/js/*.js',
+        style: 'sources/css/*.css',
         img: 'sources/img/**/*.*', 
-        fonts: 'sources/fonts/**/*.*'
+        fonts: 'sources/font/**/*.*'
     },
     watch: { 
         html: 'sources/**/*.html',
         js: 'sources/js/**/*.js',
-        style: 'sources/style/**/*.scss',
+        style: 'sources/style/**/*.css',
         img: 'sources/img/**/*.*',
-        fonts: 'sources/fonts/**/*.*'
+        fonts: 'sources/font/**/*.*'
     },
     clean: './build'
 };
@@ -81,12 +81,25 @@ gulp.task('fonts:build', function() {
         .pipe(gulp.dest(path.build.fonts))
 });
 
+gulp.task('img:build', function () {
+    gulp.src(path.sources.img) 
+        .pipe(imagemin({ 
+            progressive: true,
+            svgoPlugins: [{removeViewBox: false}],
+            use: [pngquant()],
+            interlaced: true
+        }))
+        .pipe(gulp.dest(path.build.img)) 
+        .pipe(reload({stream: true}));
+});
+
 
 gulp.task('build', [
     'html:build',
     'js:build',
     'style:build',
-    'fonts:build'
+    'fonts:build',
+	'img:build'
 ]);
 
 gulp.task('clean', function (cb) {

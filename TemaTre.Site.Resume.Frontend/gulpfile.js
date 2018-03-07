@@ -11,14 +11,20 @@ var gulp = require('gulp'),
     rimraf = require('rimraf'),
     browserSync = require("browser-sync"),
     reload = browserSync.reload;
+	
+var argv = require('yargs')
+			.default('baseDir', 'build')
+			.argv;
+	
+
 
 var path = {
     build: { 
-        html: 'build/',
-        js: 'build/js/',
-        css: 'build/css/',
-        img: 'build/img/',
-        fonts: 'build/font/'
+        html: argv.baseDir,
+        js: argv.baseDir + '/js/',
+        css: argv.baseDir + '/css/',
+        img: argv.baseDir + '/img/',
+        fonts: argv.baseDir + '/font/'
     },
     sources: { 
         html: 'sources/*.html', 
@@ -34,7 +40,7 @@ var path = {
         img: 'sources/img/**/*.*',
         fonts: 'sources/font/**/*.*'
     },
-    clean: './build'
+    clean: argv.baseDir
 };
 
 var config = {

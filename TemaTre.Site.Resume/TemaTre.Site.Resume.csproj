@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+  </ItemGroup>
+  
+   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Exec Command="node || start http://nodejs.org &amp;&amp; echo You need to install NodeJS" ContinueOnError="false" /> 
+		
+		<!-- it is, so have npm install all dependencies --> 
+		<Exec WorkingDirectory="../$(ProjectName).App/" Command="npm install" ContinueOnError="false" /> 
+			
+		<!-- npm installed bower for us, so now let bower install it's dependencies --> 
+		<Exec WorkingDirectory="../$(ProjectName).App/" Command="node_modules\.bin\bower install" ContinueOnError="false" /> 
+		
+		<!-- run the gulp task for the appropriate configuration -->
+		<Exec WorkingDirectory="../$(ProjectName).App/" Command="node_modules\.bin\gulp $(Configuration)" ContinueOnError="false" /> 		
+	 
+   </Target>
+
+
+</Project>

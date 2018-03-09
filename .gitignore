@@ -264,3 +264,4 @@ bower_components
 build
 /TemaTre.Site.Resume.Frontend/package-lock.json
 /TemaTre.Site.Resume.App/package-lock.json
+wwwroot

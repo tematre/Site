@@ -22,7 +22,7 @@
 		<Exec WorkingDirectory="$(SolutionDir)TemaTre.Site.Resume.App/" Command="$(SolutionDir)TemaTre.Site.Resume.App\node_modules\.bin\bower install" ContinueOnError="false" /> 
 		
 		<!-- run the gulp task for the appropriate configuration -->
-		<Exec WorkingDirectory="$(SolutionDir)TemaTre.Site.Resume.App/" Command="$(SolutionDir)TemaTre.Site.Resume.App\node_modules\.bin\gulp $(Configuration)" ContinueOnError="false" /> 		
+		<Exec WorkingDirectory="$(SolutionDir)TemaTre.Site.Resume.App/" Command="$(SolutionDir)TemaTre.Site.Resume.App\node_modules\.bin\gulp --gulpfile $(SolutionDir)TemaTre.Site.Resume.App\gulpfile.js build --baseDir $(SolutionDir)$(ProjectName)\wwwroot" ContinueOnError="false" /> 		
 	 
    </Target>
 

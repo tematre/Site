@@ -19,12 +19,11 @@
 		<Exec WorkingDirectory="../$(ProjectName).App/" Command="npm install" ContinueOnError="false" /> 
 			
 		<!-- npm installed bower for us, so now let bower install it's dependencies --> 
-		<Exec WorkingDirectory="../$(ProjectName).App/" Command="..\$(ProjectName).App\node_modules\.bin\bower install" ContinueOnError="false" /> 
+		<Exec WorkingDirectory="$(SolutionDir)TemaTre.Site.Resume.App/" Command="$(SolutionDir)TemaTre.Site.Resume.App\node_modules\.bin\bower install" ContinueOnError="false" /> 
 		
 		<!-- run the gulp task for the appropriate configuration -->
-		<Exec WorkingDirectory="../$(ProjectName).App/" Command="..\$(ProjectName).App\node_modules\.bin\gulp $(Configuration)" ContinueOnError="false" /> 		
+		<Exec WorkingDirectory="$(SolutionDir)TemaTre.Site.Resume.App/" Command="$(SolutionDir)TemaTre.Site.Resume.App\node_modules\.bin\gulp $(Configuration)" ContinueOnError="false" /> 		
 	 
    </Target>
-
 
 </Project>

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemaTre.Site.Resume.Backend", "TemaTre.Site.Resume.Backend\TemaTre.Site.Resume.Backend.csproj", "{F0574063-56F4-4B63-906D-6FC75B92BBE6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemaTre.Site.Resume", "TemaTre.Site.Resume\TemaTre.Site.Resume.csproj", "{F0574063-56F4-4B63-906D-6FC75B92BBE6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

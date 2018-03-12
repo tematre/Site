@@ -217,7 +217,7 @@ p.short-email a{
     border-right: 1px solid #eaeaea;
 }
 
-.menu li:first-child, .menu li:nth-child(2){
+.menu li:first-child, .menu li:nth-child(1){
 	border-right:none;
 }
 

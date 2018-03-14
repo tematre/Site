@@ -10,30 +10,6 @@ const string cleanTask = "Clean";
 const string restoreTask = "Restore";
 const string rebuildTask = "Rebuild";
 
-private MSBuildSettings WithDefaults(MSBuildSettings settings, string configuration, string logger)
-{
-    settings.UseToolVersion(MSBuildToolVersion.VS2015)
-        .SetMSBuildPlatform(MSBuildPlatform.x86)
-        .SetConfiguration(configuration)
-        .SetVerbosity(Verbosity.Minimal);
-
-    if (string.IsNullOrWhiteSpace(logger))
-    {
-        return settings;
-    }
-
-    if (BuildSystem.IsRunningOnTeamCity)
-    {
-        settings.WithLogger(logger);
-    }
-    else
-    {
-        settings.AddFileLogger(new MSBuildFileLogger { LogFile = File(logger), Verbosity = Verbosity.Minimal });
-    }
-
-    return settings;
-}
-
 
 Task(cleanTask).Does(() => 
 {
@@ -59,7 +35,7 @@ Task(restoreTask)
     .IsDependentOn(cleanTask)
     .Does(() =>
 {
-    NuGetRestore(solution);
+    DotNetCoreRestore(solution);
 });
 
 
@@ -67,7 +43,7 @@ Task(buildTask)
     .IsDependentOn(restoreTask)
     .Does(() =>
 {
-    MSBuild(solution, settings => WithDefaults(settings, configuration, msbuildLogger));
+    DotNetCoreMSBuild(solution);
 });
 
 
@@ -76,7 +52,7 @@ Task(rebuildTask)
 	.IsDependentOn(buildTask)
     .Does(() =>
 {
-    MSBuild(solution, settings => WithDefaults(settings, configuration, msbuildLogger));
+    DotNetCoreMSBuild(solution);
 });
 
 

@@ -13,13 +13,11 @@
   </ItemGroup>
   
    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<Exec Command="node || start http://nodejs.org &amp;&amp; echo You need to install NodeJS" ContinueOnError="false" /> 
-		
 		<!-- it is, so have npm install all dependencies --> 
 		<Exec WorkingDirectory="../$(ProjectName).App/" Command="npm install" ContinueOnError="false" /> 
 			
 		<!-- npm installed bower for us, so now let bower install it's dependencies --> 
-		<Exec WorkingDirectory="$(SolutionDir)TemaTre.Site.Resume.App/" Command="$(SolutionDir)TemaTre.Site.Resume.App\node_modules\.bin\bower install" ContinueOnError="false" /> 
+		<Exec WorkingDirectory="$(SolutionDir)TemaTre.Site.Resume.App/" Command="$(SolutionDir)TemaTre.Site.Resume.App\node_modules\.bin\bower install --allow-root" ContinueOnError="false" /> 
 		
 		<!-- run the gulp task for the appropriate configuration -->
 		<Exec WorkingDirectory="$(SolutionDir)TemaTre.Site.Resume.App/" Command="$(SolutionDir)TemaTre.Site.Resume.App\node_modules\.bin\gulp --gulpfile $(SolutionDir)TemaTre.Site.Resume.App\gulpfile.js build --baseDir $(SolutionDir)$(ProjectName)\wwwroot" ContinueOnError="false" /> 		

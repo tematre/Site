@@ -24,14 +24,16 @@ var path = {
         js: argv.baseDir + '/js/',
         css: argv.baseDir + '/css/',
         img: argv.baseDir + '/img/',
-        fonts: argv.baseDir + '/font/'
+        fonts: argv.baseDir + '/font/',
+		resume: '/'
     },
     sources: { 
         html: 'sources/*.html', 
         js: 'sources/js/*.js',
         style: 'sources/css/**/*.css',
         img: 'sources/img/**/*.*', 
-        fonts: 'sources/font/**/*.*'
+        fonts: 'sources/font/**/*.*',
+		resume : '../.Net_Developer_En_Artem_Tregubov.pdf'
     },
     watch: { 
         html: 'sources/**/*.html',
@@ -87,6 +89,11 @@ gulp.task('fonts:build', function() {
         .pipe(gulp.dest(path.build.fonts))
 });
 
+gulp.task('resume:build', function() {
+    gulp.src(path.sources.resume)
+        .pipe(gulp.dest(path.build.resume))
+});
+
 gulp.task('img:build', function () {
     gulp.src(path.sources.img) 
         .pipe(imagemin({ 
@@ -105,7 +112,8 @@ gulp.task('build', [
     'js:build',
     'style:build',
     'fonts:build',
-	'img:build'
+	'img:build',
+	'resume:build'
 ]);
 
 gulp.task('clean', function (cb) {

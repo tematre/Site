@@ -25,15 +25,15 @@ var path = {
         css: argv.baseDir + '/css/',
         img: argv.baseDir + '/img/',
         fonts: argv.baseDir + '/font/',
-		resume: '/'
-    },
+	resume: argv.BaseDir 
+},
     sources: { 
         html: 'sources/*.html', 
         js: 'sources/js/*.js',
         style: 'sources/css/**/*.css',
         img: 'sources/img/**/*.*', 
         fonts: 'sources/font/**/*.*',
-		resume : '../.Net_Developer_En_Artem_Tregubov.pdf'
+	resume : '.Net_Developer_En_Artem_Tregubov.pdf'
     },
     watch: { 
         html: 'sources/**/*.html',
@@ -92,6 +92,7 @@ gulp.task('fonts:build', function() {
 gulp.task('resume:build', function() {
     gulp.src(path.sources.resume)
         .pipe(gulp.dest(path.build.resume))
+        .pipe(reload({stream: true}));
 });
 
 gulp.task('img:build', function () {

@@ -29,7 +29,10 @@ var path = {
     sources: { 
         html: 'sources/*.html', 
         js: 'sources/js/*.js',
-        style: 'sources/css/**/*.*',
+        style: {
+		allFiles : 'sources/css/**/*.*',
+		cssFiles : 'sources/css/**/*.css'
+	},
         img: 'sources/img/**/*.*', 
         fonts: 'sources/font/**/*.*'
     },

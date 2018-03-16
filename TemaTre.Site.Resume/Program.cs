@@ -17,10 +17,21 @@ namespace TemaTre.Site.Resume
             BuildWebHost(args).Run();
         }
 
-        public static IWebHost BuildWebHost(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
+        public static IWebHost BuildWebHost(string[] args)
+        {
+            var config = new ConfigurationBuilder()
+                                .SetBasePath(Directory.GetCurrentDirectory())
+                                .AddJsonFile("appsettings.json", true)
+                                .Build();
+
+            var result = WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
                 .UseWebRoot("wwwroot")
+                .UseConfiguration(config)
                 .Build();
+
+            return result;
+        }
+            
     }
 }

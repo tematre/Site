@@ -25,7 +25,7 @@ var path = {
         css: argv.baseDir + '/css/',
         img: argv.baseDir + '/img/',
         fonts: argv.baseDir + '/font/',
-	resume: argv.BaseDir 
+	resume: argv.baseDir + '/' 
 },
     sources: { 
         html: 'sources/*.html', 

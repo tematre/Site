@@ -26,7 +26,8 @@ namespace TemaTre.Site.Resume
                 app.UseDeveloperExceptionPage();
             }
             app.UseDefaultFiles()
-               .UseStaticFiles();
+               .UseStaticFiles()
+               .UseDirectoryBrowser();
 
             app.UseForwardedHeaders(new ForwardedHeadersOptions
             {

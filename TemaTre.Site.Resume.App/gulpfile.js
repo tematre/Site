@@ -34,7 +34,7 @@ var path = {
         style: 'sources/css/**/*.css',
         img: 'sources/img/**/*.*', 
         fonts: 'sources/font/**/*.*',
-		resume : '.Net_Developer_En_Artem_Tregubov.pdf'
+		resume : 'DotNet_Developer_En_Artem_Tregubov.pdf'
     },
     watch: { 
         html: 'sources/**/*.html',

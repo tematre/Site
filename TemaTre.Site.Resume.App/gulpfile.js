@@ -10,6 +10,7 @@ var gulp = require('gulp'),
     pngquant = require('imagemin-pngquant'),
     rimraf = require('rimraf'),
     browserSync = require("browser-sync"),
+	copy = require('copy'),
     reload = browserSync.reload;
 	
 var argv = require('yargs')
@@ -25,15 +26,15 @@ var path = {
         css: argv.baseDir + '/css/',
         img: argv.baseDir + '/img/',
         fonts: argv.baseDir + '/font/',
-	resume: argv.baseDir + '/' 
-},
+		resume: argv.baseDir  
+	},
     sources: { 
         html: 'sources/*.html', 
         js: 'sources/js/*.js',
         style: 'sources/css/**/*.css',
         img: 'sources/img/**/*.*', 
         fonts: 'sources/font/**/*.*',
-	resume : '.Net_Developer_En_Artem_Tregubov.pdf'
+		resume : '.Net_Developer_En_Artem_Tregubov.pdf'
     },
     watch: { 
         html: 'sources/**/*.html',
@@ -89,10 +90,8 @@ gulp.task('fonts:build', function() {
         .pipe(gulp.dest(path.build.fonts))
 });
 
-gulp.task('resume:build', function() {
-    gulp.src(path.sources.resume)
-        .pipe(gulp.dest(path.build.resume))
-        .pipe(reload({stream: true}));
+gulp.task('resume:build', function(cb) {
+    copy(path.sources.resume, path.build.resume, cb);
 });
 
 gulp.task('img:build', function () {
